@@ -248,15 +248,38 @@ As of 2023, the list of CMP routes with their associated __CMP route ID__ is giv
 |210|Memorial Dr/Fresh Pond Pk Westbound|WB|
 
 ## List of TMCs for CMP Express Highways in the region
-Once the conflation process has been completed, a list of all TMCs for CMP express highways in the region can be extracted.
-The list of all TMCs for the CMP express highways (within the former “CTPS model region”) for 2019 is found in the file: 
+The set of express highways covered by the CMP extends beyond the MPO boundary to include all of area formerly known as the ‘CTPS model area’ of 164 towns. 
+Once the conflation process has been completed, a list of all TMCs for CMP express highways in this area can be extracted.
+The list of all TMCs for the CMP express highways (within the former “CTPS model area”) for 2019 is found in the file: 
 
 \\\\lilliput\\groups\\Traffic*and*Design\\11123 CMP 2019 INRIX\\TMC\_lists\\raw\\all\_expressways\_in\_model\_region.txt
+
+### Derviced Product (not required for the CMP)
+In addition, as a convenience individual files listing the TMCs for each express route are prepared, 
+so individual routes can easily be queried interactively in RITIS and/or using a vanilla database or the ESRI tools.
+These lists are maintained on the lilliput file server in the folder:
+
+\\lilliput\groups\Traffic_and_Design\11123 CMP 2019 INRIX\TMC_lists\expressways
+
+This folder contains two subfolders: __raw__ and __quoted__. 
+This __raw__ folder contains the list of TMCs for each route, _not_ delimited by quotation marks, for use in RITIS.
+The __quoted__ folder contains the list of TMCs for each route delimited by quotes, for use when querying a vanilla database or in the ESRI tools.
 
 ## List of TMCs for CMP Arterial Highways in the MPO area
 A comprehensive list of all TMCs for the CMP arterial highways within the MPO for 2019 is found in the file:
 
 \\\\lilliput\\groups\\Traffic*and*Design\\11123 CMP 2019 INRIX\\arterial\_conflation\\TMC\_Lists\\raw\\all-tmcs-2022-09-30.txt
+
+### Derived Product (not required for the CMP)
+In addition, as a convenience individual files listing the TMCs for each arterial route are prepared, 
+so individual routes can easily be queried interactively in RITIS and/or using a vanilla database or the ESRI tools.
+These lists are maintained on the lilliput file server in the folder:
+
+\\lilliput\groups\Traffic_and_Design\11123 CMP 2019 INRIX\TMC_lists\arterials
+
+This folder contains two subfolders: __raw__ and __quoted__. 
+The __raw __ folder contains the list of TMCs for each route, _not_ delimited by quotation marks, for use in RITIS.
+The __quoted__ folder contains the list of TMCs for each route delimited by quotes, for use when querying a vanilla database or in the ESRI tools.
 
 ## List of dates used for this year's CMP
 The list of dates for which CMP performance metrics will be calculated for this year's CMP is obtained from CTPS's CMP Manager. 
