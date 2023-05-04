@@ -41,8 +41,8 @@ Examples:
 
 **reference\_speed** - INRIX-computed reference speed
 
-**confidence\_*****score** -* This field has 3 possible values: 30, 20, 10. However, CTPS only uses (and thus only downloads) records with
- a **confidence*****\_*****score** of 30. Descriptions of the 3 possible values:
+__confidence\_score__ -This field has 3 possible values: 30, 20, 10. However, CTPS only uses (and thus only downloads) records with
+ a __confidence\_score__ of 30. Descriptions of the 3 possible values:
 
 **30**: Real-time data. Any segment that has adequate data, at any time of day, will report real time data.
 
@@ -50,7 +50,7 @@ Examples:
 
 **10**: Reference speed.  From 10 pm to 4 am, any segment without sufficient real time data will show the reference speed for that segment. Any segment that does not have calculated historical averages will show the reference speed 24 hours a day if there is not sufficient real time data.
 
-**cvalue** \- This field indicates the probability that the current probe reading represents the actual roadway conditions based on recent and historical trends. 
+**cvalue** - This field indicates the probability that the current probe reading represents the actual roadway conditions based on recent and historical trends. 
 CTPS only uses records with a **cvalue** of 75 or higher. 
 
 **Note:** RITIS does not support filtering of data for extraction and download based on the value of the cvalue field (it does support filtering for extraction and download based
