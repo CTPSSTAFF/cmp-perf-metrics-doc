@@ -56,7 +56,35 @@ The __cvalue__ field "indicates the probability that the current probe reading r
 CTPS practice is to only use records with a __cvalue__ of 75.0 or higher.
 The script above does this, as well as filtering out records with empty or null __cvalue__ or __speed__ fields.
 
-## Data Prep in BigQuery
+## Upload CSV Data to Google Cloud Storage and Google BigQuery
+
+### Upload CSV Data to Google Cloud Storage
+First, using the Google Cloud Storage web console, create a new bucket in the __ctps-traffic-1__ project named for the CMP year in question, e.g., 'inrix_cmp_2019.'
+
+Second, using the Google Cloud Storage web console, upload the CSV file downloaded from RITIS \(or, in the past, CSV files purchased from INRIX\) to the 
+Google Cloud Storage  bucket just created, with a name of the form:to 
+* cmp\_yyyy\_expressways\_all\_processed or
+* cmp\_yyyy\_arterials\_all\_processed
+
+### Load Data from Google Cloud Storage to Google BigQuery
+In the Google BigQuery web console, do the following:
+* In the Explorer pane, expand the __ctps-traffic-project1__ project, and then select the destination dataset, e.g., INRIX\_2019\_All
+* Click the __Create table__ button; a new panel will be displayed. 
+*In the Create table panel, specify the following details:
+  * In the __Source__ section:
+    * Under __Create table from__, select__Google Cloud Storage__
+	* In the next box, select the file to be imported, e.g., cmp\_2019\_expressways\_all.csv
+	* For __File format__, select __CSV__
+  * In the __Destination__ section:
+    * For __Project__, select __ctps-traffic-project1__ 
+	* For __Dataset__, specify the destination dataset, e.g., INRIX\_2019\_All. \(Yes, this is redundant.\)
+	* In the next box, specify the name of the table to create, e.g., INRIX\_2019\_expressways\_all
+	* Allow __Table Type__ to default to _Native table__
+  * Under __Schema__ click the box for __Auto detect__
+* No other parameters need to be specified
+* Lastly, press the __Create Table__ button.
+
+## Data Prep in Google BigQuery
 Extensive data prep was performed in BigQuery for the 2012 and 2015 CMPs.
 Because the data was packaged in multiple "chunks" the data had to be uploaded to BigQuery 
 one "chunk" at a time, and the results stitched together into a single table.
@@ -71,7 +99,8 @@ to perform data prep in BigQuery. These were modified for use for the 2015 CMP.
 The original scripts for the 2012 CMP can no longer be found on the lilliput file server. 
 However, the ones for the 2015 CMP are still in place, and can be found in:
 
-\\\\lilliput\\groups\\Traffic\_and\_Design\\11123 CMP 2015 INRIX\\batch\_files, which contains a number of sub-folders for each ‘stage’ of processing. The following naming convention was adopted for these scripts. Each script was given a name of the form:
+\\\\lilliput\\groups\\Traffic\_and\_Design\\11123 CMP 2015 INRIX\\batch\_files, which contains a number of sub-folders for each ‘stage’ of processing. 
+The following naming convention was adopted for these scripts. Each script was given a name of the form:
 
 -   n - a number indicating the major processing stage
 -   an underscore
