@@ -49,7 +49,7 @@ The relevant code is stored on the lilliput file server:
 
 \\\\lilliput\\groups\\Traffic*and*Design\\11123 CMP 2019 INRIX\\\\python\_scripts\\filter\_downloaded\_csv.py 
 
-This script is a variant of the first one created for this purpose.
+This script is a variant of the first one created for this purpose and used for the 2012 and 2015 CMPs.
 For the 2019 CMP, it was updated to also filter records on the __cvalue__ field.
 
 As noted in the documentation on the format of the INRIX data records,
