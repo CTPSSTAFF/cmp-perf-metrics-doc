@@ -23,7 +23,6 @@ See [https://cloud.google.com/sdk/](https://cloud.google.com/sdk/) for more inf
 After the SDK has been installed, open a Windows Command Prompt (“DOS Box”) and enter the following command to initialize it:
 ```gcloud init
 ```
-
 The completion of this step will involve your logging into (“authenticating”) to your Google account in a page that will be opened in your web browser. 
 Part of this authentication step will involve selecting the cloud project to “use” during your *gcloud* session: the project to select is __ctps-trafic-1__.
 
@@ -68,8 +67,9 @@ data 'in one go' would invariably time out - after many hours - and have to be r
 This process never succeded, and we were forced to resort to chunk-by-chunk upload.\)
 
 For the 2012 CMP, Windows batch \(.bat\) scripts were developed to call the Google Cloud Command Line Interface
-to perform data prep in BigQuery. The original scripts for the 2012 CMP can no longer be found on the lilliput
-file server. However, the ones for the 2015 CMP are still in place, and can be found in:
+to perform data prep in BigQuery. These were modified for use for the 2015 CMP.
+The original scripts for the 2012 CMP can no longer be found on the lilliput file server. 
+However, the ones for the 2015 CMP are still in place, and can be found in:
 
 \\\\lilliput\\groups\\Traffic\_and\_Design\\11123 CMP 2015 INRIX\\batch\_files, which contains a number of sub-folders for each ‘stage’ of processing. The following naming convention was adopted for these scripts. Each script was given a name of the form:
 
@@ -78,12 +78,21 @@ file server. However, the ones for the 2015 CMP are still in place, and can be f
 -   m - a number indicating the step within the given stage
 -   a descriptive name
 
-Thus, for example, the SQL script **1\_2\_load\_inrix\_2012\_quarter1\_suffolk.bat** was the second step in the first stage of processing, 
+Thus, for example, the SQL script __1\_2\_load\_inrix\_2012\_quarter1\_suffolk.bat__ was the second step in the first stage of processing, 
 and is concerned with loading the data for Suffolk county for calendar quarter 1 of 2012.
 
-There are a total of 6 Stages of processing; the first 5 are purely 'data prep' stages.
-With the advent of RITIS, the queries in Stages 1 through 5 should no longer be needed.
-The queries in Stage 6 continue to be used for 'real' 
-data processing. \(Starting with the 2019 arterial CMP, these queries are executed directly in BigQuery rather than via a Windows .bat script calling the 
-Google Cloud Command Line Interface. 
+There are a total of 6 Stages of processing. Stages 1 through 4 entirely handle uploading 'raw' INRIX data
+delivered to CTPS in 'chunks' defined by county and calendar quarter. With the advent of RITIS, they are no longer needed.
+
+Similarly, the queries in Stage 5 are concerned with filtering out data outside of the defined CMP date and time ranges,
+and filtering out data with a __cvalue__ field value less than 75.0. 
+With the advent of RITIS, the former is no longer required; the latter is accomplished by the Python script described
+in the previous section of this chapter.
+
+The queries in Stage 6 comprise the part of actual CMP metrics calculation performed in BigQuery.
+They are discussed in the folowing chapter on __Calculation\_of\_Metrics__.
+Starting with the 2019 arterial CMP, these queries are executed directly in BigQuery rather than by executing a 
+Windows .bat script that calls the Google Cloud Command Line Interface. 
+
+
 
