@@ -48,11 +48,12 @@ Delay per mile = (average travel time - free flow travel time) / segment length
 ```
 Delay per mile (displayed in seconds per mile) shows the extra time needed to traverse a road segment. 
 This performance measure is presented in a per-mile metric to emphasize the intensity of congestion.
+This performance measure is only calculated for expressways.
 
 ## Delay
 The __delay__ for a road segment is defined as:
 ```
-Formula to be provided.
+ Delay = average travel t ime - free-flow travel time
 ``` 
 Delay is expressed in minutes. 
 This performance measure is only calculated for arterials; it is different from delay-per-mile.
