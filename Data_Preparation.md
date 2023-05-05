@@ -21,7 +21,8 @@ The Google Cloud SDK for Windows must first be installed on your PC and then ini
 See [https://cloud.google.com/sdk/](https://cloud.google.com/sdk/) for more information on downloading and installing the SDK.
 
 After the SDK has been installed, open a Windows Command Prompt (“DOS Box”) and enter the following command to initialize it:
-```gcloud init
+```
+gcloud init
 ```
 The completion of this step will involve your logging into (“authenticating”) to your Google account in a page that will be opened in your web browser. 
 Part of this authentication step will involve selecting the cloud project to “use” during your *gcloud* session: the project to select is __ctps-trafic-1__.
