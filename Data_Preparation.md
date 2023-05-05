@@ -8,11 +8,24 @@ BigQuery was ideally suited to the task at hand, and we proceeded to process the
 Part-way through this process, it became clear that the data had been filtered down to a size that could be handled by a conventional database.
 
 This chapter discusses:
-1. Data preparation performed before CSV data is uploaded to Google BigQuery
-2. Data preparation performed __in__ Google BigQuery
+1. Getting set up to use Google Cloud Tools (Google Cloud Storage and Google BigQuery)
+2. Data preparation performed before CSV data is uploaded to Google BigQuery
+3. Data preparation performed __in__ Google BigQuery
 
-Item \(1\) is common to the 2012 and 2015 CMPs.
-Much of item \(2\) was not required in 2019 \(and should not be required going forward\) as RITIS is able to perform the relevant filtering.
+Items \(1\) and \(2\) are common to the 2012 and 2015 CMPs.
+Much of item \(3\) was not required in 2019 \(and should not be required going forward\) as RITIS is able to perform the relevant filtering.
+
+## Getting Set Up to Use Google Cloud Tools
+Many of the steps described in this document are performed by executing Google BigQuery queries submitted from the Google Cloud SDK (software development kit) for Windows. 
+The Google Cloud SDK for Windows must first be installed on your PC and then initialized. 
+See [https://cloud.google.com/sdk/](https://cloud.google.com/sdk/) for more information on downloading and installing the SDK.
+
+After the SDK has been installed, open a Windows Command Prompt (“DOS Box”) and enter the following command to initialize it:
+```gcloud init
+```
+
+The completion of this step will involve your logging into (“authenticating”) to your Google account in a page that will be opened in your web browser. 
+Part of this authentication step will involve selecting the cloud project to “use” during your *gcloud* session: the project to select is __ctps-trafic-1__.
 
 ## Data Prep Before Upload to BigQuery
 Data prep before upload to BigQuery is concerned with two matters:
