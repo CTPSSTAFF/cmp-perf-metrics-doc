@@ -56,7 +56,7 @@ The length of each TMC is calculated by the scripts:
 * 6\_1\_03\_create\_inrix\_2019\_cmp\_exp\_avg\_length.bat 
 
 #### Calculation of Total Number of Records
-This calculation is performed for each of the two peak periods.
+This calculation is performed for each TMC for each of the two peak periods.
 The relevant scripts are: 
 * 6\_2\_01\_create\_inrix\_2019\_cmp\_art\_count\_all\_tmc\_am.bat
 * 6\_2\_01\_create\_inrix\_2019\_cmp\_exp\_count\_all\_tmc\_am.bat
@@ -64,7 +64,7 @@ The relevant scripts are:
 * 6\_2\_02\_create\_inrix\_2019\_cmp\_exp\_count\_all\_tmc\_pm.bat
 
 #### Calculation of Total Number of Congested Records
-This calculation is performed for each of the two peak periods.
+This calculation is performed for each TMC for each of the two peak periods.
 The relevant scripts are:  
 * 6\_3\_01\_create\_inrix\_2019\_cmp\_art\_count\_cong\_tmc\_am.bat
 * 6\_3\_01\_create\_inrix\_2019\_cmp\_exp\_count\_cong\_tmc\_am.bat
@@ -75,21 +75,21 @@ Note that an __expressway segment__is considered congested__ when the average sp
 and an __artierial segment__ is considered congested when the average speed falls below __19 MPH__.
 
 #### Calculation of "Total Speed"
-This calculation is performed for each of the two peak periods by the scripts:  
+This calculation is performed for each TMC for each of the two peak periods by the scripts:  
 * 6\_5\_01\_create\_inrix\_2019\_cmp\_art\_sum\_speed\_cong\_tmc\_am.bat
 * 6\_5\_01\_create\_inrix\_2019\_cmp\_exp\_sum\_speed\_cong\_tmc\_am.bat
 * 6\_5\_02\_create\_inrix\_2019\_cmp\_art\_sum\_speed\_cong\_tmc\_pm.bat
 * 6\_5\_02\_create\_inrix\_2019\_cmp\_exp\_sum\_speed\_cong\_tmc\_pm.bat
 
-#### Calculation of 5th Percentile Speed
-This calculation is performed for each of the two peak periods by the scripts:
+#### Calculation of 5th Percentile of Speed Distribution
+This calculation is performed for each TMC for each of the two peak periods by the scripts:
 * 6\_6\_01\_create\_inrix\_2015\_cmp\_art\_5pct\_speed\_tmc\_am.bat
 * 6\_6\_01\_create\_inrix\_2015\_cmp\_exp\_5pct\_speed\_tmc\_am.bat
 * 6\_6\_02\_create\_inrix\_2019\_cmp\_art\_5pct\_speed\_tmc\_pm.bat
 * 6\_6\_02\_create\_inrix\_2019\_cmp\_exp\_5pct\_speed\_tmc\_pm.bat
 
 ### Calculation of 85th Percentile "Early Morning" Speed
-These calculations are performed by the following scripts:
+These calculations are performed for each TMC for the time periods midnight to 2 AM, 2 AM to 4 AM, and midnight to 4 AM by the following scripts:
 * 6\_7\_01\_create\_inrix\_2019\_cmp\_art\_85pct\_speed\_0\_to\_2\_tmc.bat
 * 6\_7\_01\_create\_inrix\_2019\_cmp\_exp\_85pct\_speed\_0\_to\_2\_tmc.bat
 * 6\_7\_03\_create\_inrix\_2019\_cmp\_art\_85pct\_speed\_2\_to\_4\_tmc.bat
@@ -100,7 +100,7 @@ These calculations are performed by the following scripts:
 #### Calculation of 50th and 80th Percentile Travel Time 
 The 50th and 80th percentile travel times  are used as inputs tofor the calculation of
 the level of travel-time reliability \(LOTTR\) metric.
-These calculation of these two metrics were performed for the 2019 arterial CMP by the scripts:
+These calculation of these two metrics were performed for the 2019 arterial CMP for each TMC by the scripts:
 * 6\_20\_01\_cr\_Inrix\_2019\_cmp\_art\_80pct\_tt\_tmc\_am\_v2 
 * 6\_20\_02\_cr\_Inrix\_2019\_cmp\_art\_80pct\_tt\_tmc\_pm\_v2
 * 6\_20\_03\_cr\_Inrix\_2019\_cmp\_art\_50pct\_tt\_tmc\_am\_v2
@@ -125,22 +125,24 @@ missing free-flow speed values are filled in manually in ArcGIS Pro by harvestin
 At this point, the tables produced by processing in Google BigQuery are downloaded in CSV format from Google BigQuery and loaded into a 'desktop' database \(see below\) for further processing.
 The names of the relevant tables are of the form: for the 2019 arterial CMP are:
 
-1.  INRIX\_yyyy\_cmp\_art\_avg\_length
-2.  INRIX\_yyyy\_cmp\_art\_count\_all\_tmc\_am
-3.  INRIX\_yyyy\_cmp\_art\_count\_all\_tmc\_pm
-4.  INRIX\_yyyy\_cmp\_art\_count\_cong\_tmc\_am
-5.  INRIX\_yyyy\_cmp\_art\_count\_cong\_tmc\_pm
-6.  INRIX\_yyyy\_cmp\_art\_sum\_speed\_all\_tmc\_am
-7.  INRIX\_yyyy\_cmp\_art\_sum\_speed\_all\_tmc\_pm
-8.  INRIX\_yyyy\_cmp\_art\_sum\_speed\_cong\_tmc\_am
-9.  INRIX\_yyyy\_cmp\_art\_sum\_speed\_cong\_tmc\_pm
-10.  INRIX\_yyyy\_cmp\_art\_5pct\_speed\_tmc\_am
-11.  INRIX\_yyyy\_cmp\_art\_5pct\_speed\_tmc\_pm
-12.  INRIX\_yyyy\_cmp\_art\_free\_flow\_speed
-13.  INRIX\_yyyy\_cmp\_art\_80pct\_tt\_am\_tmc
-14.  INRIX\_yyyy\_cmp\_art\_80pct\_tt\_pm\_tmc
-15.  INRIX\_yyyy\_cmp\_art\_50pct\_tt\_am\_tmc
-16.  INRIX\_yyyy\_cmp\_art\_50pct\_tt\_pm\_tmc
+1.  INRIX\_yyyy\_cmp\_XXX\_avg\_length
+2.  INRIX\_yyyy\_cmp\_XXX\_count\_all\_tmc\_am
+3.  INRIX\_yyyy\_cmp\_XXX\_count\_all\_tmc\_pm
+4.  INRIX\_yyyy\_cmp\_XXX\_count\_cong\_tmc\_am
+5.  INRIX\_yyyy\_cmp\_XXX\_count\_cong\_tmc\_pm
+6.  INRIX\_yyyy\_cmp\_XXX\_sum\_speed\_all\_tmc\_am
+7.  INRIX\_yyyy\_cmp\_XXX\_sum\_speed\_all\_tmc\_pm
+8.  INRIX\_yyyy\_cmp\_XXX\_sum\_speed\_cong\_tmc\_am
+9.  INRIX\_yyyy\_cmp\_XXX\_sum\_speed\_cong\_tmc\_pm
+10.  INRIX\_yyyy\_cmp\_XXX\_5pct\_speed\_tmc\_am
+11.  INRIX\_yyyy\_cmp\_XXX\_5pct\_speed\_tmc\_pm
+12.  INRIX\_yyyy\_cmp\_XXX\_free\_flow\_speed
+13.  INRIX\_yyyy\_cmp\_XXX\_80pct\_tt\_am\_tmc
+14.  INRIX\_yyyy\_cmp\_XXX\_80pct\_tt\_pm\_tmc
+15.  INRIX\_yyyy\_cmp\_XXX\_50pct\_tt\_am\_tmc
+16.  INRIX\_yyyy\_cmp\_XXX\_50pct\_tt\_pm\_tmc
+
+Where __yyyy__ indicates the year, and __XXXX_ is either __exp__ \(for expressways\) or __art__ \(for artierials\).
 
 For example, for the 2019 arterial CMP, the tables were named:
 1.  INRIX\_2019\_cmp\_art\_avg\_length\_v2
@@ -165,6 +167,23 @@ As noted above:
 * Missing free-flow speed values in INRIX\_2019\_cmp\_art\_free\_flow\_speed\_v2\_incomplete are filled in manually.
 
 ## Processing Performed in a 'Desktop' Database
+
+### Logical Process
+The logical (or 'abstract') processing peformed in a 'desktop' database is as follows:
+* Calculate congested speed percentage and congested minutes per peak hour
+* Calculate average speed for am and pm peaks
+* Calculate average congested speed for am and pm peaks
+* In some cases, generally those in which the calculations were performed on a very small number of observations, the estimated free-flow speed is less than one
+   or both peak period speeds. In these cases, set the free-flow speed to the maximum of the AM and PM peak average speeds. __NOT NEEDED NOT DONE for EXP__
+* Calculate the speed index for the AM and PM peak periods as the ratio of average speed to posted speed limit
+* Calculate the average travel time for the am and pm peaks equal to  60 * segment length / average speed
+* Calculate the average free flow travel time equal to 60 * segment length / free flow speed
+* Calculate the 5th percentile travel time for the am and pm peaks equal to  60 * segment length / 5th percentile speed
+* Calculate the average delay as the difference between peak period average travel time and free flow travel time
+* Calculate the delay per mile as the ratio of average delay to segment length
+* Calculate the travel time index as the ratio of average travel time to free flow travel time
+* Calculate the planning time index as the ratio of 5th percentile travel time to free flow travel time
+
 ### 2012 and 2015 CMPs and 2019 Expressway CMP
 __MS Access__ was used as the ‘desktop’ database for the 2012 Expressway and Arterial CMPs, the 2015 Expressway and Arterial CMPs, and the 2019 Expressway CMP. 
 Work on  the 2019 arterial CMP was interrupted in March 2019 by the onset of the COVID-19 pandemic. 
@@ -175,7 +194,11 @@ The MS Access database in which the final calculation of performance metrics for
 
 This database contains the data downloaded from processing in BigQuery, the queries to process it in MS Access, and the tables containing the final results.
 
-### 2019 Arterial CMP and Going Forward
+#### 2019 Expressway CMP
+The MS Access queries used for the 2019 expressway CMP are as follows:
+
+
+### 2019 Arterial CMP and Expressway and Arterial CMP Going Forward
 Work on the 2019 artieral CMP resumed in the summer of 2022. 
 By 2022 it had become abundantly clear that MS Access was getting very long in the tooth, and migration to a more up-to-date platform was advisable. 
 We chose to migrate from MS Access to [SQLite](https://sqlite.org/index.html),a more modern desktop database that is used elsewhere in CTPS.
@@ -183,11 +206,16 @@ This allowed us to leverage the SQL queries used in the past, albeit with a non-
 This document is written with the assumption that SQLite will continue to be used going forward.
 
 #### Installation of SQLite
+1. Download the SQLite executable (sqlite3.exe) from the SQLIte website (https://www.sqlite.org/index.html) and put it in the working directory for the performance measures.
+2.	Open your working directory in Windows Explorer and type “cmd” in the path bar; this will open a command prompt window where you can enter SQLite queries.
+3.	The performance measures calculations are performed in an SQLite database \(a .db file\). To create a new database, type “.open \[databasename\].db”
 
-__TBD__
+#### Calculation of Metrics for Arterials
+Before running the queries, you’ll need to import the tables from BigQuery into the SQLite database. 
+Use the code in the file  
+\\lilliput\\groups\\Traffic\_and\_Design\\11123\11123 CMP 2019 INRIX\arterials\_SQLite\import_csvs.txt  
+and enter it directly into SQLite.
 
-#### Calculation of Metrics
-
-__TO BE CONTINUED__
+You are now ready to enter the queries, which will create new tables in the SQLite database and populate them with the performance measures.
 
 
