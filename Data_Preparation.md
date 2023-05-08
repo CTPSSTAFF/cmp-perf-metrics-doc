@@ -27,8 +27,8 @@ gcloud init
 The completion of this step will involve your logging into (“authenticating”) to your Google account in a page that will be opened in your web browser. 
 Part of this authentication step will involve selecting the cloud project to “use” during your *gcloud* session: the project to select is __ctps-trafic-1__.
 
-## Data Prep Before Upload to BigQuery
-Data prep before upload to BigQuery is concerned with two matters:
+## Data Prep Before Upload to Google Cloud Storage and Google BigQuery
+Data prep before upload to Google Cloud Storage is concerned with two matters:
 1. 'Exploding' the __measurement\_tstamp__ field in the INRIX data
 2. Filtering records on the __cvalue__ field in the INRIX data
 
@@ -122,7 +122,7 @@ in the previous section of this chapter.
 The queries in Stage 6 comprise the part of actual CMP metrics calculation performed in BigQuery.
 They are discussed in the folowing chapter on __Calculation\_of\_Metrics__.
 Starting with the 2019 arterial CMP, these queries are executed directly in BigQuery rather than by executing a 
-Windows .bat script that calls the Google Cloud Command Line Interface. 
+Windows batch (.bat) script that calls the Google Cloud Command Line Interface. 
 
 
 
