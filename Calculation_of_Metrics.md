@@ -197,7 +197,56 @@ The MS Access database in which the final calculation of performance metrics for
 This database contains the data downloaded from processing in BigQuery, the queries to process it in MS Access, and the tables containing the final results.
 
 ### 2019 Expressway CMP
-The MS Access queries used for the 2019 expressway CMP are as follows:
+
+The MS Access database in which the final calculation of performance metrics for the 2019 Expressway CMP is found in:  
+\\\\lilliput\\groups\\Traffic\_and\_Design\\11123 CMP 2019 INRIX\performance_measures\\inrix\_2016\_perf\_meas.mdb. 
+
+This database contains the queries for both the expressway and arterial CMP, __however the queries for 
+the arterials were not run, as 'desktop' processing was moved to SQLite__ \(see below\).
+
+These queries are executed in the order by the "prefix" portion of their name. The queries with the prefix __6__ 
+are concerned with calculating the various metrics; the queries with the prefix __7__ are concerned with 
+creating and populating the table in which all the performance metrics are gathered in one place.
+A summary of the processing performed by each query is as follows:
+
+* __6\_08\_01\_cr\_Inrix\_2019\_cmp\_exp\_cong\_min\_tmc\_am__ - calculate the number of congested minutes for each TMC in the AM peak period
+* __6\_08\_02\_cr\_Inrix\_2019\_cmp\_exp\_cong\_min\_tmc\_pm__ - calculate the number of congested minutes for each TMC in the PM peak period
+* __6\_09\_01\_cr\_Inrix\_2019\_cmp\_exp\_avg\_speed\_all\_am__ - calculate the average speed for all records for each TMC in the AM peak period
+* __6\_09\_02\_cr\_Inrix\_2019\_cmp\_exp\_avg\_speed\_all\_pm__ - calculate the average speed for all records for each TMC in the PM peak period
+* __6\_10\_01\_cr\_Inrix\_2019\_cmp\_exp\_avg\_speed\_cong\_am__ - calculate the average speed for all 'congested' records for each TMC in the AM peak period
+* __6\_10\_02\_cr\_Inrix\_2019\_cmp\_exp\_avg\_speed\_cong\_pm__ - calculate the average speed for all 'congested' records for each TMC in the PM peak period
+* __6\_12\_01\_cr\_Inrix\_2019\_cmp\_exp\_speed\_index\_am__ - calculate the speed index for the AM peak period for each TMC
+* __6\_12\_02\_cr\_Inrix\_2019\_cmp\_exp\_speed\_index\_pm__ - calculate the speed index for the PM peak period for each TMC
+* __6\_13\_01\_cr\_Inrix\_2019\_cmp\_exp\_avg\_travel\_time\_am__ - calculate the average travel time during the AM peak period for each TMC
+* __6\_13\_02\_cr\_Inrix\_2019\_cmp\_exp\_avg\_travel\_time\_pm__ - calculate the average travel time during the PM peak period for each TMC
+* __6\_14\_01\_cr\_Inrix\_2019\_cmp\_exp\_free\_flow\_travel\_time__ - calculate the free-flow travel time for each TMC
+* __6\_15\_01\_cr\_Inrix\_2019\_cmp\_exp\_5pct\_travel\_time\_am__ - calculate the 5% travel time during the AM peak period for each TMC
+* __6\_15\_02\_cr\_Inrix\_2019\_cmp\_exp\_5pct\_travel\_time\_pm__ - calcuate the 5% travel time during the PM peak period for each TMC
+* __6\_16\_01\_cr\_Inrix\_2019\_cmp\_exp\_avg\_delay\_am__ - calculate the average dealy during the AM peak period for each TMC
+* __6\_16\_02\_cr\_Inrix\_2019\_cmp\_exp\_avg\_delay\_pm__ - calculate the average delay during the PM peak period for each TMC
+* __6\_17\_01\_cr\_Inrix\_2019\_cmp\_exp\_delay\_per\_mile\_am__ - calculate the delay-per-mile during the AM peak period for each TMC
+* __6\_17\_02\_cr\_Inrix\_2019\_cmp\_exp\_delay\_per\_mile\_pm__ - calculate the delay-per-mile during the PM peak period for each TMC
+* __6\_18\_01\_cr\_Inrix\_2019\_cmp\_exp\_travel\_time\_idx\_am__ - calculate the travel-time index for the AM peak period for each TMC
+* __6\_18\_02\_cr\_Inrix\_2019\_cmp\_exp\_travel\_time\_idx\_pm__ - calculate the travel-time index for the PM peak period for each TMC
+* __6\_19\_01\_cr\_Inrix\_2019\_cmp\_exp\_planning\_time\_idx\_am__ - calculate the planning-time index for the AM peak period for each TMC
+* __6\_19\_02\_cr\_Inrix\_2019\_cmp\_exp\_planning\_time\_idx\_pm__ - calculate the planning-time index for the PM peak period for each TMC
+* __7\_01\_01\_populate\_expressway\_performance\_measures__ - create the final table into which all performance metrics will be gathered
+* __7\_01\_02\_populate\_exp\_perf\_measures\_lanes\_spd\_limit__ - populate the columns for number of travel lanes and posted speed limit
+* __7\_01\_03\_populate\_exp\_perf\_measures\_ffs__ - populate the column for free-flow speed
+* __7\_01\_04\_populate\_exp\_perf\_measures\_am\_avg\_sp__ - populate the column for average speed during the AM peak period
+* __7\_01\_05\_populate\_exp\_perf\_measures\_am\_cong\_sp__ - populate the column for congested speed during the AM peak period
+* __7\_01\_06\_populate\_exp\_perf\_measures\_am\_cong\_mn__ - populate the column for number of congested minutes in the AM peak period
+* __7\_01\_07\_populate\_exp\_perf\_measures\_am\_del\_mi__ - populate the column for delay-per-mile during the AM peak period
+* __7\_01\_08\_populate\_exp\_perf\_measures\_am\_avtt\_ix__ - populate the column for travel-time index during the AM peak period
+* __7\_01\_09\_populate\_exp\_perf\_measures\_am\_5ptt\_ix__ - populate the column for 5% travel-time index during the AM peak period
+* __7\_01\_10\_populate\_exp\_perf\_measures\_am\_spd\_ix__ - populate the column for speed index during the AM peak period
+* __7\_01\_11\_populate\_exp\_perf\_measures\_pm\_avg\_sp__ - populate the column for average speed during the PM peak period
+* __7\_01\_12\_populate\_exp\_perf\_measures\_pm\_cong\_sp__ - populate the column for congested speed during the PM peak period
+* __7\_01\_13\_populate\_exp\_perf\_measures\_pm\_cong\_mn__ - populate the column for number of congested minutes during the PM peak period
+* __7\_01\_14\_populate\_exp\_perf\_measures\_pm\_del\_mi__ - populate the column for delay-per-mile during the PM peak period
+* __7\_01\_15\_populate\_exp\_perf\_measures\_pm\_avtt\_ix__ - populate the column for travel-time index during the PM peak period
+* __7\_01\_16\_populate\_exp\_perf\_measures\_pm\_5ptt\_ix__ - populate the column for 5% travel-time index during the PM peak period
+* __7\_01\_17\_populate\_exp\_perf\_measures\_pm\_spd\_ix__ - populate the column for speed index during the PM peak period
 
 
 ### 2019 Arterial CMP and Expressway and Arterial CMP Going Forward
