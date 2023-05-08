@@ -5,10 +5,10 @@ The calculation of CMP metrics is carried out in two phases:
 1. processing performed in Google BigQuery
 2. processing peformed in a 'desktop' database
 
-The job of phase \(1\) is, essentially, to 'boil down' the data to the 
+The job of phase 1 is, essentially, to 'boil down' the data to the 
 point that it is small enough to be processed in a 'desktop' database.
 While moving the final phase processing into a 'desktop' database may not be
-required froma a purely theoretical point of view, it has been done
+required from a a purely theoretical point of view, it has been done
 in the past to help reduce BigQuery costs - particularly when the 
 CMP project and Data Resources budgets were under great stress.
 
@@ -88,7 +88,7 @@ This calculation is performed for each TMC for each of the two peak periods by t
 * 6\_6\_02\_create\_inrix\_2019\_cmp\_art\_5pct\_speed\_tmc\_pm.bat
 * 6\_6\_02\_create\_inrix\_2019\_cmp\_exp\_5pct\_speed\_tmc\_pm.bat
 
-### Calculation of 85th Percentile "Early Morning" Speed
+#### Calculation of 85th Percentile "Early Morning" Speed
 These calculations are performed for each TMC for the time periods midnight to 2 AM, 2 AM to 4 AM, and midnight to 4 AM by the following scripts:
 * 6\_7\_01\_create\_inrix\_2019\_cmp\_art\_85pct\_speed\_0\_to\_2\_tmc.bat
 * 6\_7\_01\_create\_inrix\_2019\_cmp\_exp\_85pct\_speed\_0\_to\_2\_tmc.bat
@@ -142,7 +142,7 @@ The names of the relevant tables are of the form: for the 2019 arterial CMP are:
 15.  INRIX\_yyyy\_cmp\_XXX\_50pct\_tt\_am\_tmc
 16.  INRIX\_yyyy\_cmp\_XXX\_50pct\_tt\_pm\_tmc
 
-Where __yyyy__ indicates the year, and __XXXX_ is either __exp__ \(for expressways\) or __art__ \(for artierials\).
+Where __yyyy__ indicates the year, and __XXXX__ is either __exp__ \(for expressways\) or __art__ \(for artierials\).
 
 For example, for the 2019 arterial CMP, the tables were named:
 1.  INRIX\_2019\_cmp\_art\_avg\_length\_v2
@@ -174,7 +174,9 @@ The logical (or 'abstract') processing peformed in a 'desktop' database is as fo
 * Calculate average speed for am and pm peaks
 * Calculate average congested speed for am and pm peaks
 * In some cases, generally those in which the calculations were performed on a very small number of observations, the estimated free-flow speed is less than one
-   or both peak period speeds. In these cases, set the free-flow speed to the maximum of the AM and PM peak average speeds. __NOT NEEDED NOT DONE for EXP__
+   or both peak period speeds. In these cases, set the free-flow speed to the maximum of the AM and PM peak average speeds. \(In general, this step is not
+   neeed for express highways, as the volume of traffic - even overnight - pretty much ensures that there are no TMCs that lack data records from the 
+   overnight hours.\)
 * Calculate the speed index for the AM and PM peak periods as the ratio of average speed to posted speed limit
 * Calculate the average travel time for the am and pm peaks equal to  60 * segment length / average speed
 * Calculate the average free flow travel time equal to 60 * segment length / free flow speed
@@ -194,7 +196,7 @@ The MS Access database in which the final calculation of performance metrics for
 
 This database contains the data downloaded from processing in BigQuery, the queries to process it in MS Access, and the tables containing the final results.
 
-#### 2019 Expressway CMP
+### 2019 Expressway CMP
 The MS Access queries used for the 2019 expressway CMP are as follows:
 
 
@@ -211,11 +213,8 @@ This document is written with the assumption that SQLite will continue to be use
 3.	The performance measures calculations are performed in an SQLite database \(a .db file\). To create a new database, type “.open \[databasename\].db”
 
 #### Calculation of Metrics for Arterials
-Before running the queries, you’ll need to import the tables from BigQuery into the SQLite database. 
+Before running the queries, import the tables from BigQuery into the SQLite database. 
 Use the code in the file  
 \\lilliput\\groups\\Traffic\_and\_Design\\11123\11123 CMP 2019 INRIX\arterials\_SQLite\import_csvs.txt  
 and enter it directly into SQLite.
-
-You are now ready to enter the queries, which will create new tables in the SQLite database and populate them with the performance measures.
-
 
