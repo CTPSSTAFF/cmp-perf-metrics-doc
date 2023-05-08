@@ -197,7 +197,6 @@ The MS Access database in which the final calculation of performance metrics for
 This database contains the data downloaded from processing in BigQuery, the queries to process it in MS Access, and the tables containing the final results.
 
 ### 2019 Expressway CMP
-
 The MS Access database in which the final calculation of performance metrics for the 2019 Expressway CMP is found in:  
 \\\\lilliput\\groups\\Traffic\_and\_Design\\11123 CMP 2019 INRIX\performance_measures\\inrix\_2016\_perf\_meas.mdb. 
 
@@ -207,8 +206,8 @@ the arterials were not run, as 'desktop' processing was moved to SQLite__ \(see 
 These queries are executed in the order by the "prefix" portion of their name. The queries with the prefix __6__ 
 are concerned with calculating the various metrics; the queries with the prefix __7__ are concerned with 
 creating and populating the table in which all the performance metrics are gathered in one place.
-A summary of the processing performed by each query is as follows:
 
+A summary of the processing performed by each query is as follows:
 * __6\_08\_01\_cr\_Inrix\_2019\_cmp\_exp\_cong\_min\_tmc\_am__ - calculate the number of congested minutes for each TMC in the AM peak period
 * __6\_08\_02\_cr\_Inrix\_2019\_cmp\_exp\_cong\_min\_tmc\_pm__ - calculate the number of congested minutes for each TMC in the PM peak period
 * __6\_09\_01\_cr\_Inrix\_2019\_cmp\_exp\_avg\_speed\_all\_am__ - calculate the average speed for all records for each TMC in the AM peak period
@@ -262,8 +261,50 @@ This document is written with the assumption that SQLite will continue to be use
 3.	The performance measures calculations are performed in an SQLite database \(a .db file\). To create a new database, type “.open \[databasename\].db”
 
 #### Calculation of Metrics for Arterials
-Before running the queries, import the tables from BigQuery into the SQLite database. 
-Use the code in the file  
+Before running queries to cacluate the arterial performance metrics,
+the CSV tables doenloaded from BigQuery must be imported into the SQLite database. 
+To do this, enter the commands in the file  
 \\lilliput\\groups\\Traffic\_and\_Design\\11123\11123 CMP 2019 INRIX\arterials\_SQLite\import_csvs.txt  
-and enter it directly into SQLite.
+directly into SQLite.
 
+The queries are stored in individual text files in the directory  
+\\lilliput\\groups\\Traffic\_and\_Design\\11123\11123 CMP 2019 INRIX\arterials_SQLite\perf_measure_queries.
+
+Queries should be executed in the order specified by their "prefix", because downstream queries often depend
+upon results already caclulated by one or more "upstream" queries.
+
+A summary of the processing performed by each query is as follows:
+* __6\_08\_03\_cr\_Inrix\_2019\_cmp\_art\_cong\_min\_tmc\_am\_v2.txt__ - calculate the number of congested minutes in the AM peak period for each TMC
+* __6\_08\_04\_cr\_Inrix\_2019\_cmp\_art\_cong\_min\_tmc\_pm\_v2.txt__ - calculate the number of congested minutes in the PM peak period for each TMC
+* __6\_09\_03\_cr\_Inrix\_2019\_cmp\_art\_avg\_speed\_all\_am\_v2.txt__ - calcuate the average speed for all records in the AM peak period for each TMC
+* __6\_09\_04\_cr\_Inrix\_2019\_cmp\_art\_avg\_speed\_all\_pm\_v2.txt__ - calculate the average speed for all records in the PM peak period for each TMC
+* __6\_10\_03\_cr\_Inrix\_2019\_cmp\_art\_avg\_speed\_cong\_am\_v2.txt__ - calculate the average speed for 'congested' records in the AM peak period for each TMC
+* __6\_10\_04\_cr\_Inrix\_2019\_cmp\_art\_avg\_speed\_cong\_pm\_v2.txt__ - calculate the average speed for 'congested' records in the PM peak period for each TMC
+* __6\_12\_03\_cr\_Inrix\_2019\_cmp\_art\_speed\_index\_am\_v2.txt__ - calculate the speed index in the AM peak period for each TMC
+* __6\_12\_04\_cr\_Inrix\_2019\_cmp\_art\_speed\_index\_pm\_v2.txt__ - calculate the speed index in the PM peak period for each TMC
+* __6\_13\_03\_cr\_Inrix\_2019\_cmp\_art\_avg\_travel\_time\_am\_v2.txt__ - calculate the average travel time in the AM peak period for each TMC
+* __6\_13\_04\_cr\_Inrix\_2019\_cmp\_art\_avg\_travel\_time\_pm\_v2.txt	__ - calculate the average travel time in the PM peak period for each TMC
+* __6\_14\_02\_cr\_Inrix\_2019\_cmp\_art\_free\_flow\_travel\_time\_v2.txt__ - calculate the free-flow travel time for each TMC
+* __6\_15\_03\_cr\_Inrix\_2019\_cmp\_art\_5pct\_travel\_time\_am\_v2.txt__ - calcluate the 5th percentile travel time for the AM peak period for each TMC
+* __6\_15\_04\_cr\_Inrix\_2019\_cmp\_art\_5pct\_travel\_time\_pm\_v2.txt__ - calculate the 5th percentile travel time for the PM peak period for each TMC
+* __6\_16\_03\_cr\_Inrix\_2019\_cmp\_art\_avg\_delay\_am\_v2.txt__ - calculate the average delay in the AM peak period for each TMC
+* __6\_16\_04\_cr\_Inrix\_2019\_cmp\_art\_avg\_delay\_pm\_v2.txt__ - calculate the average delay in the PM peak period for each TMC
+* __6\_17\_03\_cr\_Inrix\_2019\_cmp\_art\_delay\_per\_mile\_am\_v2.txt__ - calculate the delay-per-mile in the AM peak period for each TMC
+* __6\_17\_04\_cr\_Inrix\_2019\_cmp\_art\_delay\_per\_mile\_pm\_v2.txt__ - calculate the delay-per-mile in the PM peak period for each TMC
+* __6\_18\_03\_cr\_Inrix\_2019\_cmp\_art\_travel\_time\_idx\_am\_v2.txt__ - calculate the travel-time index in the AM peak period for each TMC
+* __6\_18\_04\_cr\_Inrix\_2019\_cmp\_art\_travel\_time\_idx\_pm\_v2.txt__ - calculate the travel-time index in the PM peak period for each TMC
+* __6\_19\_03\_cr\_Inrix\_2019\_cmp\_art\_planning\_time\_idx\_am\_v2.txt__ - calculate the planning-time index in the AM peak period for each TMC
+* __6\_19\_04\_cr\_Inrix\_2019\_cmp\_art\_planning\_time\_idx\_pm\_v2.txt__ - calculate the planning-time index in the PM peak period for each TMC
+* __6\_20\_05\_cr\_Inrix\_2019\_cmp\_art\_lottr\_tmc\_am\_v2.txt__ - calculate the level of travel-time reliability for the AM peak period for each TMC
+* __6\_20\_06\_cr\_Inrix\_2019\_cmp\_art\_lottr\_tmc\_pm\_v2.txt__ - calculate the level of travel-time reliability for the PM peak period for each TMC
+
+Notes on the individual queries:
+* When calculating the number of congested minutes per hour, if the number of congested records is 0 
+  care is taken to return a value of 0 rather than NULL.
+* When calculating the average congested speed, if the number of congested records is 0
+  care is taken to return a value of 0 rather than NULL.
+
+In addition to the the above, there are two queries that were not used for the 2019 CMP:
+* __6\_11\_03\_update\_Inrix\_2019\_cmp\_art\_free\_flow\_speed\_edited1
+* __6\_11\_04\_update\_Inrix\_2019\_cmp\_art\_free\_flow\_speed\_edited2
+See above, under __Estimation of Free-flow Speed__.
