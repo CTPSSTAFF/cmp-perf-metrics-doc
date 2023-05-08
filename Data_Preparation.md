@@ -85,7 +85,7 @@ In the Google BigQuery web console, do the following:
 * No other parameters need to be specified
 * Lastly, press the __Create Table__ button.
 
-## Data Prep in Google BigQuery
+## Data Prep in Google BigQuery - 2012 and 2015 CMPs
 Extensive data prep was performed in BigQuery for the 2012 and 2015 CMPs.
 Because the data was packaged in multiple "chunks" the data had to be uploaded to BigQuery 
 one "chunk" at a time, and the results stitched together into a single table.
@@ -123,6 +123,3 @@ The queries in Stage 6 comprise the part of actual CMP metrics calculation perfo
 They are discussed in the folowing chapter on __Calculation\_of\_Metrics__.
 Starting with the 2019 arterial CMP, these queries are executed directly in BigQuery rather than by executing a 
 Windows batch (.bat) script that calls the Google Cloud Command Line Interface. 
-
-
-
