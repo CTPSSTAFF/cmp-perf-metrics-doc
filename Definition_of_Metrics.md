@@ -2,7 +2,7 @@
 This document defines the roadway performance metrics calculated for the CMP.
 
 ## Average Speed
-The __average speed_ for a road segment is defined as:
+The __average speed__ for a road segment is defined as:
 ```
 Average Speed = Total speed value for all data samples / total number of data samples
 ```
