@@ -11,5 +11,6 @@ for the Congestion Management Process \(CMP\). It is organized as follows:
 * The __Calculation\_of\_Metrics__ chapter documents how the CMP performance metrics are calculated.
 * The __Odds\_and\_Ends__ chapter is a place to record important information about this process that doesn't have a "home" in any of the other chapters.
 
-The diagram [images/data_fetch_and_prep.svg](./images/data_fetch_and_prep.svg) summarizes the data "fetch" and "prep" processes 
-performed for the 2019 Arterial CMP, and which will be used going forward.
+The following diagrams summarize the process used for the 2019 Arterial CMP, and which we plan to use going forward:
+* [images/data_fetch_and_prep.svg](./images/data_fetch_and_prep.svg) - summarizes the data "fetch" and "prep" processes 
+* [images/calculation_of_metrics_overview.svg](./images/calculation_of_metrics_overview.svg) - summarizes the calculation of metrics, _per se_
