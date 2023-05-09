@@ -13,4 +13,9 @@ for the Congestion Management Process \(CMP\). It is organized as follows:
 
 The following diagrams summarize the process used for the 2019 Arterial CMP, and which we plan to use going forward:
 * [images/data_fetch_and_prep.svg](./images/data_fetch_and_prep.svg) - summarizes the data "fetch" and "prep" processes 
-* [images/calculation_of_metrics_overview.svg](./images/calculation_of_metrics_overview.svg) - summarizes the calculation of metrics, _per se_
+* [images/calculation_of_metrics_overview.svg](./images/calculation_of_metrics_overview.svg) - gives an overview the calculation of metrics, _per se_
+
+The following "slide images" provide more detail on the calculation of metrics:
+* [images/calculation_details_slide_1.svg](./images/calculation_details_slide_1.svg)
+* [images/calculation_details_slide_2.svg](./images/calculation_details_slide_2.svg)
+* [images/calculation_details_slide_3.svg](./images/calculation_details_slide_3.svg)
