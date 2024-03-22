@@ -19,3 +19,8 @@ The following "slide images" provide more detail on the calculation of metrics:
 * [images/calculation_details_slide_1.svg](./images/calculation_details_slide_1.svg)
 * [images/calculation_details_slide_2.svg](./images/calculation_details_slide_2.svg)
 * [images/calculation_details_slide_3.svg](./images/calculation_details_slide_3.svg)
+
+## Colophon
+Author: Ben Krepp (bkrepp@ctps.org)
+Last revision: 9 May 2023
+Location: Cyberspace
